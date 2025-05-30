@@ -18,8 +18,16 @@ def test_json_structure():
     with open("data.json", encoding='utf-8') as f:
         data = json.load(f)
         keys = data[0].keys()
-        assert "firstname" in keys
-        assert "lastname" in keys
+
+        expected_keys = [
+            'Givenname', 'Surname', 'Streetaddress', 'City', 'Zipcode',
+            'Country', 'CountryCode', 'NationalId', 'TelephoneCountryCode',
+            'Telephone', 'Birthday', 'ConsentToContact'
+        ]
+
+        for key in expected_keys:
+            assert key in keys
+
 
 def test_json_row_count():
     with open("data.json", encoding='utf-8') as f:
